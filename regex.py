@@ -1,5 +1,5 @@
 import re
-
+import numpy as np
 # # TODO 1: выполните пункты 1-3 ДЗ
 # # ваш код
 
@@ -58,9 +58,16 @@ for elem in contacts_list:
 print(contact_list)
 
 
+listA = contact_list
+splits = np.array_split(listA, 7)
+new_sp=list()
+for array in splits:
+  new_sp.append(list(array))
+print(new_sp)
+
 # TODO 2: сохраните получившиеся данные в другой файл
 # код для записи файла в формате CSV
 with open("phonebook.csv", "w") as f:
   datawriter = csv.writer(f, delimiter=',')
   # Вместо contacts_list подставьте свой список
-  datawriter.writerows(contact_list)
+  datawriter.writerows(new_sp)
