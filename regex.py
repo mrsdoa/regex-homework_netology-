@@ -1,5 +1,4 @@
 import re
-import numpy as np
 # # TODO 1: выполните пункты 1-3 ДЗ
 # # ваш код
 
