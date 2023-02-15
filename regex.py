@@ -47,27 +47,39 @@ for i in contacts_list:
         i[5] = j[5]
       if i[6] == '':
         i[6] = j[6]
-# print(contacts_list)
-#
-contact_list = list()
-for elem in contacts_list:
-  for elem2 in elem:
-    # print(page2)
-    if elem2 not in contact_list:
-      contact_list.append(elem2)
-print(contact_list)
+# print(len(contacts_list))
 
+header = contacts_list[0]
+body = contacts_list[1:]
+s = []
+for item in body:
+  d = dict(zip(header, item))
+  s.append(d)
+# print(header)
+# print(body)
+# pprint(s)
 
-listA = contact_list
-splits = np.array_split(listA, 7)
-new_sp=list()
-for array in splits:
-  new_sp.append(list(array))
-print(new_sp)
+# l = [{'a': 123, 'b': 1234},
+#         {'a': 3222, 'b': 1234},
+#         {'a': 123, 'b': 1234}]
+
+seen = set()
+new_l = []
+for d in s:
+    t = tuple(d.items())
+    if t not in seen:
+        seen.add(t)
+        new_l.append(d)
+
+final_ = []
+final_.append(header)
+for item in new_l:
+  final_.append(list(item.values()))
+pprint(final_)
 
 # TODO 2: сохраните получившиеся данные в другой файл
 # код для записи файла в формате CSV
 with open("phonebook.csv", "w") as f:
   datawriter = csv.writer(f, delimiter=',')
   # Вместо contacts_list подставьте свой список
-  datawriter.writerows(new_sp)
+  datawriter.writerows(final_)
