@@ -59,10 +59,6 @@ for item in body:
 # print(body)
 # pprint(s)
 
-# l = [{'a': 123, 'b': 1234},
-#         {'a': 3222, 'b': 1234},
-#         {'a': 123, 'b': 1234}]
-
 seen = set()
 new_l = []
 for d in s:
